@@ -9,7 +9,7 @@ const api = (() => {
 
 	}
 
-	function createItem(name, callback) {
+	function createItem(name, callback, failback) {
 		let newItem = JSON.stringify({ name: name });
 
 		$.ajax({
@@ -17,7 +17,8 @@ const api = (() => {
 			method: 'POST',
 			contentType: 'application/json',
 			data: newItem,
-			success: callback
+			success: callback,
+			error: failback
 		});
 	}
 

@@ -65,7 +65,7 @@ const shoppingList = (function(){
       api.createItem(newItemName, (newItem) => {
         store.addItem(newItem);
         render();
-      });
+      }, failback);
     });
   }
   
@@ -121,6 +121,10 @@ const shoppingList = (function(){
       store.setSearchTerm(val);
       render();
     });
+  }
+
+  function failback(jqXHR, status, err) {
+    console.log(jqXHR.responseJSON.message);
   }
   
   function bindEventListeners() {
