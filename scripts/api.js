@@ -31,5 +31,13 @@ const api = (() => {
 		});
 	}
 
-	return { getItems, createItem, updateItem };
+	function deleteItem(id, callback) {
+		$.ajax({
+			url: `${BASE_URL}/items/${id}`,
+			method: 'DELETE',
+			success: callback
+		});
+	}
+
+	return { getItems, createItem, updateItem, deleteItem };
 })();
