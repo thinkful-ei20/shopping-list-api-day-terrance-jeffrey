@@ -80,8 +80,8 @@ const shoppingList = (function(){
       const id = getItemIdFromElement(event.currentTarget);
       let item = store.findById(id);
       api.updateItem(id, {checked: !item.checked}, (response) => {
-        store.findAndUpdate(response.id, {checked: response.checked});
-        render();      
+        store.findAndUpdate(id, {checked: !item.checked});
+        render();
       });
     });
   }
