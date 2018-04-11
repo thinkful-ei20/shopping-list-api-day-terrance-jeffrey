@@ -104,7 +104,7 @@ const shoppingList = (function(){
       const id = getItemIdFromElement(event.currentTarget);
       const itemName = $(event.currentTarget).find('.shopping-item').val();
       api.updateItem(id, {name: itemName}, (response) => {
-        store.findAndUpdate(response.id, response.name);
+        store.findAndUpdate(id, {name: itemName});
         render();
       });
     });
