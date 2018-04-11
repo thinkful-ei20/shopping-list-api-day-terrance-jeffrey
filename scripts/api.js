@@ -22,21 +22,23 @@ const api = (() => {
 		});
 	}
 
-	function updateItem(id, updateData, callback) {
+	function updateItem(id, updateData, callback, failback) {
 		$.ajax({
 			url: `${BASE_URL}/items/${id}`,
 			method: 'PATCH',
 			contentType: 'application/json',
 			data: JSON.stringify(updateData),
-			success: callback
+			success: callback,
+			error: failback
 		});
 	}
 
-	function deleteItem(id, callback) {
+	function deleteItem(id, callback, failback) {
 		$.ajax({
 			url: `${BASE_URL}/items/${id}`,
 			method: 'DELETE',
-			success: callback
+			success: callback,
+			error: failback
 		});
 	}
 

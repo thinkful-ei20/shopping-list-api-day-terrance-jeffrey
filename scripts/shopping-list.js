@@ -82,7 +82,7 @@ const shoppingList = (function(){
       api.updateItem(id, {checked: !item.checked}, (response) => {
         store.findAndUpdate(id, {checked: !item.checked});
         render();
-      });
+      }, failback);
     });
   }
   
@@ -92,7 +92,7 @@ const shoppingList = (function(){
       api.deleteItem(id, (response) => {
         store.findAndDelete(id);
         render();
-      });
+      }, failback);
     });
   }
   
@@ -104,7 +104,7 @@ const shoppingList = (function(){
       api.updateItem(id, {name: itemName}, (response) => {
         store.findAndUpdate(id, {name: itemName});
         render();
-      });
+      }, failback);
     });
   }
   
@@ -124,7 +124,7 @@ const shoppingList = (function(){
   }
 
   function failback(jqXHR, status, err) {
-    console.log(jqXHR.responseJSON.message);
+    jqXHR.responseJSON.message;
   }
   
   function bindEventListeners() {
