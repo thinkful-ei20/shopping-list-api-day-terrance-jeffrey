@@ -57,10 +57,11 @@ const shoppingList = (function(){
 
     console.log(store.errorMessage);
     if(store.errorMessage.length > 0) {
-      $('.js-main-flex-container').removeClass('hide')
+      $('.js-main-flex-container').removeClass('hide');
+      $('.js-err-msg').text(store.errorMessage);
     }
     else {
-      $('.js-main-flex-container').addClass('hide')
+      $('.js-main-flex-container').addClass('hide');
     }
   }
   
