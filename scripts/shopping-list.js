@@ -55,8 +55,12 @@ const shoppingList = (function(){
     // insert that HTML into the DOM
     $('.js-shopping-list').html(shoppingListItemsString);
 
-    if (store.error) {
-      console.log(store.error);
+    console.log(store.errorMessage);
+    if(store.errorMessage.length > 0) {
+      $('.js-main-flex-container').removeClass('hide')
+    }
+    else {
+      $('.js-main-flex-container').addClass('hide')
     }
   }
   
@@ -68,6 +72,7 @@ const shoppingList = (function(){
       $('.js-shopping-list-entry').val('');
       api.createItem(newItemName, (newItem) => {
         store.addItem(newItem);
+        store.setErrorMessage('');
         render();
       }, failback);
     });
@@ -95,6 +100,7 @@ const shoppingList = (function(){
       const id = getItemIdFromElement(event.currentTarget);
       api.deleteItem(id, (response) => {
         store.findAndDelete(id);
+        store.setErrorMessage('');
         render();
       }, failback);
     });
@@ -107,6 +113,7 @@ const shoppingList = (function(){
       const itemName = $(event.currentTarget).find('.shopping-item').val();
       api.updateItem(id, {name: itemName}, (response) => {
         store.findAndUpdate(id, {name: itemName});
+        store.setErrorMessage('');
         render();
       }, failback);
     });
@@ -128,8 +135,8 @@ const shoppingList = (function(){
   }
 
   function failback(jqXHR, status, err) {
-    store.error = jqXHR.responseJSON.message;
-    console.log(store.error);
+    store.setErrorMessage(jqXHR.responseJSON.message);
+    render();
   }
   
   function bindEventListeners() {

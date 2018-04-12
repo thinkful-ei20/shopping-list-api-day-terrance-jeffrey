@@ -28,18 +28,23 @@ const store = (function(){
   const setSearchTerm = function(term) {
     this.searchTerm = term;
   };
+  
+  const setErrorMessage = function(message) {
+    this.errorMessage = message;
+  };
 
   return {
     items: [],
     hideCheckedItems: false,
     searchTerm: '',
+    errorMessage: '',
     addItem,
     findAndUpdate,
     findById,
     findAndDelete,
     toggleCheckedFilter,
     setSearchTerm,
-    error: '',
+    setErrorMessage,
   };
   
 }());
