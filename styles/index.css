@@ -49,3 +49,31 @@ button:hover {
 .shopping-item__checked {
   text-decoration: line-through;
 }
+
+/* custom styles */
+.main-flex-container,
+.err-msg-wrap {
+  display: flex;
+}
+
+.main-flex-container {
+  justify-content: flex-end;
+  align-content: center;
+  height: 50px;
+}
+
+.err-msg-wrap {
+  align-items: center;
+
+  background-color: tomato; 
+  box-shadow: 2px 2px 8px  #3a3838;
+  border-radius: 5px;
+  height: 40px;
+  padding: 0.4em 0.6em;
+}
+
+.err-msg {
+  color: #f0f0f0;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
