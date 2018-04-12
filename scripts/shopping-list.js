@@ -54,6 +54,10 @@ const shoppingList = (function(){
   
     // insert that HTML into the DOM
     $('.js-shopping-list').html(shoppingListItemsString);
+
+    if (store.error) {
+      console.log(store.error);
+    }
   }
   
   
@@ -124,7 +128,8 @@ const shoppingList = (function(){
   }
 
   function failback(jqXHR, status, err) {
-    jqXHR.responseJSON.message;
+    store.error = jqXHR.responseJSON.message;
+    console.log(store.error);
   }
   
   function bindEventListeners() {

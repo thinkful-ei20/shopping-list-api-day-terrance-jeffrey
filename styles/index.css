@@ -62,6 +62,10 @@ button:hover {
   height: 50px;
 }
 
+.hide {
+  display: none;
+}
+
 .err-msg-wrap {
   align-items: center;
 

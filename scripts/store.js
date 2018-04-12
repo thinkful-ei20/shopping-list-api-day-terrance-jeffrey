@@ -39,6 +39,7 @@ const store = (function(){
     findAndDelete,
     toggleCheckedFilter,
     setSearchTerm,
+    error: '',
   };
   
 }());
